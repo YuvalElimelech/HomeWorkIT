@@ -1,9 +1,12 @@
-from cProfile import run
+
 import socket
 from flask import Flask
 
 app = Flask(__name__)
 
+hostname = socket.gethostname()    
+IPAddr = socket.gethostbyname(hostname)     
+print("Your Computer IP Address is:" + IPAddr) 
 
 
 @app.route("/")
@@ -14,7 +17,4 @@ if __name__ == '__main__':
      
 # flask run --port=80
 
-hostname = socket.gethostname()    
-IPAddr = socket.gethostbyname(hostname)     
-print("Your Computer IP Address is:" + IPAddr) 
 

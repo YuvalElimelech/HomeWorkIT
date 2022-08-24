@@ -3,11 +3,18 @@ services:
   app:
     build: ./app1
     ports:
-    - "5001:5000"
+    - "80:5000"
+  web:
+    links:
+      - "db"
+      - "db:database"
+      - "redis"
   nginx:
     build: ./nginx 
     ports:
     - "9090:80"
     depends_on:
       - app
-   
+  networks: 
+    network_mode: "bridge"
+      
